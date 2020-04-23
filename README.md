@@ -1,3 +1,5 @@
-Random Names Generator
+# Random Names Generator
 
-Generate random funny names for your sprint and teams
+![Go](https://github.com/wesleimp/random-names-generator/workflows/Go/badge.svg?branch=master)
+
+Generate random funny names for your sprint and teams.
