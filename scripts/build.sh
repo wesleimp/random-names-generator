@@ -1,0 +1,1 @@
+docker build -t random-names-generator:latest .
