@@ -7,6 +7,7 @@ import (
 	"github.com/wesleimp/random-names-generator/pkg/generators/animals"
 	"github.com/wesleimp/random-names-generator/pkg/generators/fruits"
 	"github.com/wesleimp/random-names-generator/pkg/generators/heroes"
+	"github.com/wesleimp/random-names-generator/pkg/generators/vegetables"
 )
 
 // Setup all routes
@@ -30,6 +31,11 @@ func Setup(r *mux.Router) {
 
 		api.HandleFunc("/fruits", func(w http.ResponseWriter, r *http.Request) {
 			name := fruits.Generate()
+			w.Write([]byte(name))
+		})
+
+		api.HandleFunc("/vegetables", func(w http.ResponseWriter, r *http.Request) {
+			name := vegetables.Generate()
 			w.Write([]byte(name))
 		})
 	}
