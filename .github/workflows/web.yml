@@ -14,21 +14,21 @@ jobs:
 
     steps:
     - name: Setup node
-    - uses: actions/setup-node@v1
+      uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
 
     - name: Checkout code with node version ${{ matrix.node-version }}
-    - uses: actions/checkout@v1
+      uses: actions/checkout@v1
 
     - name: Install yarn
-    - run: npm install -g yarn
+      run: npm install -g yarn
 
     - name:  Deps
-    - run: yarn
+      run: yarn
 
     - name: Build
-    - run: yarn build
+      run: yarn build
 
     - name: Test
-    - run: yarn test
+      run: yarn test
