@@ -12,6 +12,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/pkg/errors"
 	"github.com/urfave/cli/v2"
+	"github.com/urfave/negroni"
 	"github.com/wesleimp/random-names-generator/cmd/web/routes"
 )
 
@@ -22,9 +23,16 @@ func Run(c *cli.Context) error {
 	r := mux.NewRouter()
 	routes.Setup(r)
 
+	n := negroni.New()
+	n.Use(&negroni.Static{
+		Dir:       http.Dir("./web/dist/"),
+		IndexFile: "index.html",
+	})
+	n.UseHandler(r)
+
 	srv := http.Server{
 		Addr:    addr,
-		Handler: r,
+		Handler: n,
 	}
 
 	return serving(&srv)

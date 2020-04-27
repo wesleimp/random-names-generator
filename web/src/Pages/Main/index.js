@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Button, Name } from "./styles"
+import api from "../../services/api"
 
-const Main = () => {
+function Main() {
+  const [name, setName] = useState("")
   const opts = [
     {value: "animals", description: "Animals" },
     {value: "fruits", description: "Fruits" },
@@ -9,17 +11,18 @@ const Main = () => {
     {value: "vegetables", description: "Vegetables" },
   ]
 
-  function handleButtonClick(endpoint) {
-    alert(endpoint)
+  function handleButtonClick(value) {
+    api.get(`/${value}`)
+      .then(res => setName(res.data))
   }
 
   return (
     <Container>
-      <Name>lkdfjsdjfsdklfjsldkfj</Name>
+      <Name>{name}</Name>
 
       <div>
-        {opts.map(o => 
-          <Button onClick={() => handleButtonClick(o.value)}>
+        {opts.map((o, i) => 
+          <Button key={i} onClick={() => handleButtonClick(o.value)}>
             {o.description}
           </Button>
         )}

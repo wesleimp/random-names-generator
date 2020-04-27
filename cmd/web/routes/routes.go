@@ -16,27 +16,23 @@ func Setup(r *mux.Router) {
 		w.Write([]byte("pong"))
 	})
 
-	api := r.PathPrefix("/api").Subrouter()
-	{
+	r.HandleFunc("/api/heroes", func(w http.ResponseWriter, r *http.Request) {
+		name := heroes.Generate()
+		w.Write([]byte(name))
+	})
 
-		api.HandleFunc("/heroes", func(w http.ResponseWriter, r *http.Request) {
-			name := heroes.Generate()
-			w.Write([]byte(name))
-		})
+	r.HandleFunc("/api/animals", func(w http.ResponseWriter, r *http.Request) {
+		name := animals.Generate()
+		w.Write([]byte(name))
+	})
 
-		api.HandleFunc("/animals", func(w http.ResponseWriter, r *http.Request) {
-			name := animals.Generate()
-			w.Write([]byte(name))
-		})
+	r.HandleFunc("/api/fruits", func(w http.ResponseWriter, r *http.Request) {
+		name := fruits.Generate()
+		w.Write([]byte(name))
+	})
 
-		api.HandleFunc("/fruits", func(w http.ResponseWriter, r *http.Request) {
-			name := fruits.Generate()
-			w.Write([]byte(name))
-		})
-
-		api.HandleFunc("/vegetables", func(w http.ResponseWriter, r *http.Request) {
-			name := vegetables.Generate()
-			w.Write([]byte(name))
-		})
-	}
+	r.HandleFunc("/api/vegetables", func(w http.ResponseWriter, r *http.Request) {
+		name := vegetables.Generate()
+		w.Write([]byte(name))
+	})
 }
