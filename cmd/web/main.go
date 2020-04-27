@@ -20,10 +20,10 @@ func main() {
 		},
 		Flags: []cli.Flag{
 			&cli.StringFlag{
-				Name:    "addr",
+				Name:    "port",
 				Usage:   "Application port address",
 				Value:   ":8080",
-				EnvVars: []string{"ADDR"},
+				EnvVars: []string{"PORT"},
 			},
 		},
 		Action: actions.Run,

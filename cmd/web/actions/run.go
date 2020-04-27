@@ -18,7 +18,7 @@ import (
 
 // Run starts the server
 func Run(c *cli.Context) error {
-	addr := c.String("addr")
+	port := c.String("port")
 
 	r := mux.NewRouter()
 	routes.Setup(r)
@@ -31,7 +31,7 @@ func Run(c *cli.Context) error {
 	n.UseHandler(r)
 
 	srv := http.Server{
-		Addr:    addr,
+		Addr:    port,
 		Handler: n,
 	}
 
