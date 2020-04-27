@@ -2,6 +2,7 @@ package actions
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -31,7 +32,7 @@ func Run(c *cli.Context) error {
 	n.UseHandler(r)
 
 	srv := http.Server{
-		Addr:    port,
+		Addr:    fmt.Sprintf(":%s", port),
 		Handler: n,
 	}
 

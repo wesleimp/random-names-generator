@@ -22,7 +22,7 @@ func main() {
 			&cli.StringFlag{
 				Name:    "port",
 				Usage:   "Application port address",
-				Value:   ":8080",
+				Value:   "8080",
 				EnvVars: []string{"PORT"},
 			},
 		},
