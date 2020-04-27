@@ -22,4 +22,5 @@ COPY --from=go_builder /app/app /app
 COPY --from=web_builder /app/web/dist ./web/dist
 
 EXPOSE 8080
+EXPOSE 80
 ENTRYPOINT ["./app"]
